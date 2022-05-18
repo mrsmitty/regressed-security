@@ -4,6 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: 08:40
+      time: "08:45"
       timezone: "Australia/Perth"
     target-branch: "main"
