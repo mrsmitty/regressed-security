@@ -7,7 +7,7 @@ public class Repository
     public async Task<int> GetData(string param)
     {
         SqlConnection con = new SqlConnection("localdb");
-        SqlCommand sqlCommand = new SqlCommand($"SELECT TOP 1 ID FROM dbo.Table WHERE Id = ${param}");
+        SqlCommand sqlCommand = new SqlCommand($"SELECT TOP 1 ID FROM dbo.Table WHERE Id = " + param, con);
         var result = await sqlCommand.ExecuteScalarAsync();
         return (int)result;
     }
