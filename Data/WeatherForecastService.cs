@@ -9,15 +9,6 @@ public class WeatherForecastService
 
     public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
     {
-        if (startDate > DateTime.Today)
-        {
-            Console.WriteLine("yep");
-        }
-        else
-        {
-
-        }
-
         return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = startDate.AddDays(index),

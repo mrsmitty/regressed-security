@@ -4,6 +4,7 @@
 
 @using regressed_security.Data
 @inject WeatherForecastService ForecastService
+@inject Repository DatabaseRepository
 
 <h1>Weather forecast</h1>
 
@@ -32,6 +33,7 @@ else
                     <td>@forecast.TemperatureC</td>
                     <td>@forecast.TemperatureF</td>
                     <td>@forecast.Summary</td>
+                    <td><button @onclick="@(() => GetData(@forecast.Summary))">Press Me</button></td>
                 </tr>
             }
         </tbody>
@@ -40,9 +42,15 @@ else
 
 @code {
     private WeatherForecast[]? forecasts;
+    private int data;
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+
+    public async Task GetData(string param)
+    {
+        data = await DatabaseRepository.GetData(param);
     }
 }
